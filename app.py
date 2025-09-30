@@ -32,16 +32,15 @@ def main():
             df['Coût_Total'] = df['Valeur_€'] + df['Droits_Calculés']
         # =================================
         
-        # ===== MESSAGE SUCCÈS =====
-        st.balloons()
-        st.success("✅ Analyse terminée !")
-        # ==========================
+        # ===== MESSAGE SUCCÈS PROFESSIONNEL =====
+        st.success(f"🛃 Analyse terminée : {len(df)} opérations douanières calculées")
+        # ========================================
         
-        # TES VISUALISATIONS EXISTANTES ICI
+        # VISUALISATIONS
         st.subheader("📊 Aperçu des données")
         st.dataframe(df.head())
         
-        # ===== AJOUTEZ CE CODE MANQUANT =====
+        # MÉTRIQUES
         total_valeur = df['Valeur_€'].sum()
         total_droits = df['Droits_Calculés'].sum()
         total_cout = df['Coût_Total'].sum()
@@ -54,9 +53,18 @@ def main():
         # DIAGRAMME EN BARRES
         st.subheader("📈 Répartition par produit")
         fig = px.bar(df.groupby('Produit')['Coût_Total'].sum().reset_index(), 
-                    x='Produit', y='Coût_Total')
+                    x='Produit', y='Coût_Total',
+                    title="Coût total par produit")
         st.plotly_chart(fig)
-        # ====================================
+        
+        # TABLEAU RÉCAPITULATIF
+        st.subheader("📋 Synthèse par produit")
+        recap_produits = df.groupby('Produit').agg({
+            'Valeur_€': 'sum',
+            'Droits_Calculés': 'sum',
+            'Coût_Total': 'sum'
+        }).round(2)
+        st.dataframe(recap_produits)
 
 if __name__ == "__main__":
     main()
