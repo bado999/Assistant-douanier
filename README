@@ -1,0 +1,77 @@
+# 🛃 Assistant Douanier - Version Démo
+
+Application de démonstration pour l'analyse douanière développée avec **Python** et **Streamlit**.  
+Outil pédagogique montrant l'intégration de données et la visualisation interactive.
+
+## 🚀 Démo Live
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://votre-app.streamlit.app)
+
+*👉 Lien à remplacer après déploiement sur Streamlit Cloud*
+
+---
+
+## 📁 Structure du Projet
+assistant-douanier/
+├── app.py # Application principale (50 lignes)
+├── data/ # Jeux de données d'exemple
+│   ├── imports.csv # Opérations d'import
+│   └── tarifs.csv # Droits de douane
+├── requirements.txt # Dépendances Python
+└── README.md # Documentation
+
+---
+
+## 🎯 Fonctionnalités Démo
+- Chargement et fusion de fichiers CSV
+- Calcul automatique des droits de douane
+- Visualisation des coûts par produit
+- Interface Streamlit simple et intuitive
+
+---
+
+## 🛠️ Installation et Utilisation
+
+### 1. Cloner le dépôt
+```bash
+git clone https://github.com/bado999/assistant-douanier.git
+cd assistant-douanier
+```
+
+### 2. Installer les dépendances
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Lancer l'application
+```bash
+streamlit run app.py
+```
+
+### 4. Utiliser l'application
+- Importer **imports.csv** et **tarifs.csv** dans la sidebar  
+- Visualiser les calculs automatiques  
+- Explorer les graphiques interactifs  
+
+---
+
+## 📊 Fichiers Requis
+- **imports.csv** : Produit, Code_HS, Pays_Origine, Valeur_€, Quantité
+- **tarifs.csv** : Code_HS, Droits_%
+
+---
+
+## 🎯 Objectif Pédagogique
+Ce projet démontre :  
+- La création d'interfaces web avec **Streamlit**  
+- Le traitement de données avec **Pandas**  
+- La visualisation avec **Plotly**  
+- L'intégration de logique métier simple  
+
+---
+
+## 👨‍💻 Auteur
+bado N'GUESSAN – [GitHub](https://github.com/bado999)
+
+---
+
+📌 *Démonstration technique - Projet portfolio développé avec Streamlit et Python*
