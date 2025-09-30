@@ -24,7 +24,6 @@ def main():
     if imports_file and tarifs_file:
         # ===== INDICATEUR CHARGEMENT =====
         with st.spinner('Analyse en cours...'):
-            # TES CALCULS EXISTANTS ICI
             imports = pd.read_csv(imports_file)
             tarifs = pd.read_csv(tarifs_file)
             
@@ -42,7 +41,22 @@ def main():
         st.subheader("📊 Aperçu des données")
         st.dataframe(df.head())
         
-        # ... reste de ton code actuel
+        # ===== AJOUTEZ CE CODE MANQUANT =====
+        total_valeur = df['Valeur_€'].sum()
+        total_droits = df['Droits_Calculés'].sum()
+        total_cout = df['Coût_Total'].sum()
+        
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Valeur marchande", f"{total_valeur:,.0f} €")
+        col2.metric("Droits de douane", f"{total_droits:,.0f} €")
+        col3.metric("Coût total", f"{total_cout:,.0f} €")
+        
+        # DIAGRAMME EN BARRES
+        st.subheader("📈 Répartition par produit")
+        fig = px.bar(df.groupby('Produit')['Coût_Total'].sum().reset_index(), 
+                    x='Produit', y='Coût_Total')
+        st.plotly_chart(fig)
+        # ====================================
 
 if __name__ == "__main__":
     main()
